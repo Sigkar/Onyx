@@ -1,0 +1,21 @@
+{
+  "name": "onyx",
+  "version": "0.0.1",
+  "description": "Neural network that generates color schemes based upon a key phrase or term",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "neural",
+    "network",
+    "color",
+    "scheme"
+  ],
+  "author": "Duncan Pierce",
+  "license": "MIT",
+  "dependencies": {
+    "brain.js": "^1.6.1",
+    "metascraper": "^5.5.3"
+  }
+}

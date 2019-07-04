@@ -1,4 +1,4 @@
-import {axios} from "axios";
+import axios from "axios";
 
 export const Scrape = async (url) => {
    const scrapedData = await axios.get(url).then(response => {

@@ -9,4 +9,4 @@ const requestHexColors = async () => {
     console.log(data);
 }
 
-requestHexColors()
+const data = requestHexColors()

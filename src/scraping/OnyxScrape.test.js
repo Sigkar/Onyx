@@ -22,7 +22,6 @@ test('Onyx should scrape', async () => {
         )
       }
   })
-  console.log(strippedArray);
   expect(data).toBeTruthy();
 });
 

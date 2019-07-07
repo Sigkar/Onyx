@@ -18,7 +18,8 @@
     "build": "npx rollup ./src/index.js --file ./local/bundle.js --format umd --name 'onyxtest'",
     "dev": "npx rollup ./src/index.js --file ./local/bundle.js --format umd --name 'onyxtest'",
     "dev-watch": "npx rollup ./src/index.js --file ./local/bundle.js --format umd --name 'onyxtest' -w",
-    "prod": "rollup -c --compact"
+    "preprod": "echo RUNNING TESTS && npm run test",
+    "prod": "npm run dev && rollup -c --compact"
   },
   "repository": {
     "type": "git",

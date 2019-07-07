@@ -1,3 +1,3 @@
-import {Scrape} from "./src/scraping/scrape.js";
+import {OnyxScrape} from "./src/scraping/OnyxScrape.js";
 
-export default Scrape;
+export default OnyxScrape;

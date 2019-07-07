@@ -7,8 +7,8 @@
   "browser": "dist/onyx.umd.min.js",
   "dev": "dist/onyx.dev.js",
   "scripts": {
-    "compile-babel": "npx babel ./src --out-dir ./build",
-    "compile-seed": "npx babel ./seed/seeding.js -o ./seed/seeding-build.js --source-map",
+    "compile-babel": "npx babel ./src --out-dir ./build --ignore '**/*.test.js'",
+    "compile-seed": "npx babel ./seed/seeding.js -o ./seed/seeding-build.js --source-map --ignore '**/*.test.js'",
     "preseed": "npm run compile-babel && npm run compile-seed",
     "seed": "node ./seed/seeding-build.js",
     "prelocaltest": "npm run dev",

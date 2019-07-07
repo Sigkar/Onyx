@@ -60,6 +60,7 @@ npm run test
 
 * [BrainJS](https://www.npmjs.com/package/brainjs)
 * [Axios](https://www.npmjs.com/package/axios)
+* [Rollup](https://www.npmjs.com/package/rollup) - *+dependencies*
 
 ## Contributing
 

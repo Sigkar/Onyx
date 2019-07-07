@@ -21,7 +21,7 @@ export default [
         preferConst: true,
         indent: "  ",
         compact: true,
-        namedExports: true
+        namedExports: false
       })
     ]
   },
@@ -40,7 +40,7 @@ export default [
         preferConst: true,
         indent: "  ",
         compact: true,
-        namedExports: true
+        namedExports: false
       })
     ]
   },

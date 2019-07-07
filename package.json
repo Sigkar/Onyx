@@ -11,7 +11,10 @@
     "pretest": "npm run build",
     "test": "npx jest --passWithNoTests",
     "build": "npx rollup ./src/index.js --file ./local/bundle.js --format umd --name 'onyxtest'",
-    "dev": "npx rollup ./src/index.js --file ./local/bundle.js --format umd --name 'onyxtest' -w",
+    "dev": "npx rollup ./src/index.js --file ./local/bundle.js --format umd --name 'onyxtest'",
+    "dev-watch":"npx rollup ./src/index.js --file ./local/bundle.js --format umd --name 'onyxtest' -w",
+    "prelocaltest":"npm run dev",
+    "localtest":"node ./local/localtest.js",
     "prod": "rollup -c --compact"
   },
   "repository": {

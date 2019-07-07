@@ -90,11 +90,11 @@
 /*!******************!*\
   !*** ./index.js ***!
   \******************/
-/*! exports provided: default */
+/*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _src_scraping_OnyxScrape_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/scraping/OnyxScrape.js */ \"./src/scraping/OnyxScrape.js\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (_src_scraping_OnyxScrape_js__WEBPACK_IMPORTED_MODULE_0__[\"OnyxScrape\"]);\n\n//# sourceURL=webpack:///./index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var _src_scraping_OnyxScrape__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/scraping/OnyxScrape */ \"./src/scraping/OnyxScrape.js\");\n/* harmony import */ var _src_utilities_ColorTranslate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/utilities/ColorTranslate */ \"./src/utilities/ColorTranslate.js\");\n\n\n\nmodule.exports = {\n   OnyxScrape: _src_scraping_OnyxScrape__WEBPACK_IMPORTED_MODULE_0__[\"OnyxScrape\"],\n   rgbToHex: _src_utilities_ColorTranslate__WEBPACK_IMPORTED_MODULE_1__[\"rgbToHex\"],\n   hexToRgb: _src_utilities_ColorTranslate__WEBPACK_IMPORTED_MODULE_1__[\"hexToRgb\"],\n   valueToHex: _src_utilities_ColorTranslate__WEBPACK_IMPORTED_MODULE_1__[\"valueToHex\"]\n}\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/webpack/buildin/harmony-module.js */ \"./node_modules/webpack/buildin/harmony-module.js\")(module)))\n\n//# sourceURL=webpack:///./index.js?");
 
 /***/ }),
 
@@ -830,6 +830,17 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 
 /***/ }),
 
+/***/ "./node_modules/webpack/buildin/harmony-module.js":
+/*!*******************************************!*\
+  !*** (webpack)/buildin/harmony-module.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = function(originalModule) {\n\tif (!originalModule.webpackPolyfill) {\n\t\tvar module = Object.create(originalModule);\n\t\t// module.parent = undefined by default\n\t\tif (!module.children) module.children = [];\n\t\tObject.defineProperty(module, \"loaded\", {\n\t\t\tenumerable: true,\n\t\t\tget: function() {\n\t\t\t\treturn module.l;\n\t\t\t}\n\t\t});\n\t\tObject.defineProperty(module, \"id\", {\n\t\t\tenumerable: true,\n\t\t\tget: function() {\n\t\t\t\treturn module.i;\n\t\t\t}\n\t\t});\n\t\tObject.defineProperty(module, \"exports\", {\n\t\t\tenumerable: true\n\t\t});\n\t\tmodule.webpackPolyfill = 1;\n\t}\n\treturn module;\n};\n\n\n//# sourceURL=webpack:///(webpack)/buildin/harmony-module.js?");
+
+/***/ }),
+
 /***/ "./src/scraping/OnyxScrape.js":
 /*!************************************!*\
   !*** ./src/scraping/OnyxScrape.js ***!
@@ -839,6 +850,18 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"OnyxScrape\", function() { return OnyxScrape; });\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var htmlparser2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! htmlparser2 */ \"./node_modules/htmlparser2/lib/index.js\");\n/* harmony import */ var htmlparser2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(htmlparser2__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nclass OnyxScrape {\n  constructor(url, targetAttr, includeString = false) {\n    this.url = url;\n    this.targetAttr = targetAttr;\n    switch (includeString) {\n      case false:\n        break;\n      default:\n        this.includeString = includeString;\n    }\n    return new Promise(async resolve => {\n      const content = await this.__requestData();\n      const parse = await this.__parseData(content);\n      resolve(parse);\n    });\n  }\n\n  async __requestData() {\n    const data = await axios__WEBPACK_IMPORTED_MODULE_0___default.a\n      .get(this.url)\n      .then(function(response) {\n        return response;\n      })\n      .catch(function(error) {\n        return [false, error];\n      });\n    return data;\n  }\n\n  async __parseData(htmlToParse) {\n    let text;\n    const targetAttr = this.targetAttr;\n    let handler = new htmlparser2__WEBPACK_IMPORTED_MODULE_1___default.a.DomHandler(function(error, dom) {\n      if(error) return false;\n      const output = htmlparser2__WEBPACK_IMPORTED_MODULE_1___default.a.DomUtils.getElementsByTagName(targetAttr, dom);\n      text = htmlparser2__WEBPACK_IMPORTED_MODULE_1___default.a.DomUtils.getText(output);\n    }, {normalizeWhitespace: true});\n    let parser = new htmlparser2__WEBPACK_IMPORTED_MODULE_1___default.a.Parser(handler, {decodeEntities: true});\n    parser.write(htmlToParse.data);\n    parser.end();\n    text = text.split(\" \");\n    return text;\n  }\n}\n\n\n//# sourceURL=webpack:///./src/scraping/OnyxScrape.js?");
+
+/***/ }),
+
+/***/ "./src/utilities/ColorTranslate.js":
+/*!*****************************************!*\
+  !*** ./src/utilities/ColorTranslate.js ***!
+  \*****************************************/
+/*! exports provided: hexToRgb, rgbToHex, valueToHex */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"hexToRgb\", function() { return hexToRgb; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"rgbToHex\", function() { return rgbToHex; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"valueToHex\", function() { return valueToHex; });\n/**\n * @author Duncan Pierce\n * @param {string} hex \n */\nconst hexToRgb = (hex) => {\n   const result = /^#?([a-f\\d]{2})([a-f\\d]{2})([a-f\\d]{2})$/i.exec(hex);\n   return result ? {\n     r: parseInt(result[1], 16),\n     g: parseInt(result[2], 16),\n     b: parseInt(result[3], 16)\n   } : null;\n }\n/**\n * @author Duncan Pierce\n * @param {array} rgb \n */\nconst rgbToHex = (rgb) => {\n   let results = [];\n   rgb.forEach( (value) => {\n      results.push(valueToHex(value))\n   })\n   return results;\n}\n\n/**\n * @author Duncan Pierce\n * @param {int} rgbValue \n */\nconst valueToHex = (rgbValue) => {\n   const hex = Math.round(rgbValue).toString(16);\n   return hex.length == 1 ? \"0\" + hex : hex;\n}\n \n\n//# sourceURL=webpack:///./src/utilities/ColorTranslate.js?");
 
 /***/ }),
 

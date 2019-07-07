@@ -1,3 +1,9 @@
-import {OnyxScrape} from "./src/scraping/OnyxScrape.js";
+import {OnyxScrape} from "./src/scraping/OnyxScrape";
+import {rgbToHex, hexToRgb, valueToHex} from "./src/utilities/ColorTranslate";
 
-export default OnyxScrape;
+module.exports = {
+   OnyxScrape,
+   rgbToHex,
+   hexToRgb,
+   valueToHex
+}

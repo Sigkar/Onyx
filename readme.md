@@ -4,6 +4,14 @@ Onyx is a neural network built in JavaScript which generates color schemes based
 
 \# TODO: Create an Onyx subdomain to display examples
 
+## Basic Usage:
+
+To seed Onyx as a neural network on your own, run
+
+```
+npm run seed
+```
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -54,6 +62,19 @@ To test Onyx, simply run:
 ```
 npm run test
 ```
+
+## Deployment / Production Build
+
+To run production builds, run
+
+```
+npm run prod
+```
+*All tests will need to run before production is allowed to continue*
+
+- This will create the following
+   - Local folder for playgrounds (Add to gitignore)
+   - Dist folder to create libs
 
 
 ## Built With

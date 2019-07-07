@@ -8876,11 +8876,18 @@ var lib_16 = lib.EVENTS;class OnyxScrape {
       default:
         this.includeString = includeString;
     }
-    return new Promise(async resolve => {
-      const content = await this.__requestData();
-      const parse = await this.__parseData(content);
-      resolve(parse);
-    });
+  }
+
+  async sendRequest() {
+    try {
+      return new Promise(async resolve => {
+        const content = await this.__requestData();
+        const parse = await this.__parseData(content);
+        resolve(parse);
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async __requestData() {
@@ -8898,12 +8905,18 @@ var lib_16 = lib.EVENTS;class OnyxScrape {
   async __parseData(htmlToParse) {
     let text;
     const targetAttr = this.targetAttr;
-    let handler = new lib.DomHandler(function(error, dom) {
-      if(error) return false;
-      const output = lib.DomUtils.getElementsByTagName(targetAttr, dom);
-      text = lib.DomUtils.getText(output);
-    }, {normalizeWhitespace: true});
-    let parser = new lib.Parser(handler, {decodeEntities: true});
+    let handler = new lib.DomHandler(
+      function(error, dom) {
+        if (error) return false;
+        const output = lib.DomUtils.getElementsByTagName(
+          targetAttr,
+          dom
+        );
+        text = lib.DomUtils.getText(output);
+      },
+      { normalizeWhitespace: true }
+    );
+    let parser = new lib.Parser(handler, { decodeEntities: true });
     parser.write(htmlToParse.data);
     parser.end();
     text = text.split(" ");

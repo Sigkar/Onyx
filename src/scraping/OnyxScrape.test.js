@@ -3,11 +3,13 @@ const OnyxScrape = require("./OnyxScrape").OnyxScrape;
 // Use the following test functions to call the scraping functions in test suites
 
 test('Onyx should scrape', async () => {
-  let data = await new OnyxScrape(
+  let Onyx = new OnyxScrape(
     "https://www.w3schools.com/tags/ref_colornames.asp",
     "td",
     "/colors/color_tryit"
   );
+  let data = await Onyx.sendRequest()
+
   let strippedArray = [];
   data.forEach( (content) => {
       if(content.substring(0, 1) === "#"){

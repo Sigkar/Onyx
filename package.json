@@ -7,12 +7,19 @@
   "browser": "dist/onyx.umd.min.js",
   "dev": "dist/onyx.dev.js",
   "scripts": {
-    "babel": "npx babel ./index.js -w -o ./build/main.bundle.js",
+    "compile-babel": "npx babel ./src --out-dir ./build --ignore '**/*.test.js'",
+    "compile-seed": "npx babel ./seed/seeding.js -o ./seed/seeding-build.js --source-map --ignore '**/*.test.js'",
+    "preseed": "npm run compile-babel && npm run compile-seed",
+    "seed": "node ./seed/seeding-build.js",
+    "prelocaltest": "npm run dev",
+    "localtest": "node ./local/localtest.js",
     "pretest": "npm run build",
     "test": "npx jest --passWithNoTests",
     "build": "npx rollup ./src/index.js --file ./local/bundle.js --format umd --name 'onyxtest'",
-    "dev": "npx rollup ./src/index.js --file ./local/bundle.js --format umd --name 'onyxtest' -w",
-    "prod": "rollup -c --compact"
+    "dev": "npx rollup ./src/index.js --file ./local/bundle.js --format umd --name 'onyxtest'",
+    "dev-watch": "npx rollup ./src/index.js --file ./local/bundle.js --format umd --name 'onyxtest' -w",
+    "preprod": "echo RUNNING TESTS && npm run test",
+    "prod": "npm run dev && rollup -c --compact"
   },
   "repository": {
     "type": "git",

@@ -11,11 +11,18 @@ export class OnyxScrape {
       default:
         this.includeString = includeString;
     }
-    return new Promise(async resolve => {
-      const content = await this.__requestData();
-      const parse = await this.__parseData(content);
-      resolve(parse);
-    });
+  }
+
+  async sendRequest() {
+    try {
+      return new Promise(async resolve => {
+        const content = await this.__requestData();
+        const parse = await this.__parseData(content);
+        resolve(parse);
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async __requestData() {
@@ -33,12 +40,18 @@ export class OnyxScrape {
   async __parseData(htmlToParse) {
     let text;
     const targetAttr = this.targetAttr;
-    let handler = new htmlparser.DomHandler(function(error, dom) {
-      if(error) return false;
-      const output = htmlparser.DomUtils.getElementsByTagName(targetAttr, dom);
-      text = htmlparser.DomUtils.getText(output);
-    }, {normalizeWhitespace: true});
-    let parser = new htmlparser.Parser(handler, {decodeEntities: true});
+    let handler = new htmlparser.DomHandler(
+      function(error, dom) {
+        if (error) return false;
+        const output = htmlparser.DomUtils.getElementsByTagName(
+          targetAttr,
+          dom
+        );
+        text = htmlparser.DomUtils.getText(output);
+      },
+      { normalizeWhitespace: true }
+    );
+    let parser = new htmlparser.Parser(handler, { decodeEntities: true });
     parser.write(htmlToParse.data);
     parser.end();
     text = text.split(" ");

@@ -3,6 +3,7 @@ const rgbToHex = require("./ColorTranslate").rgbToHex;
 const valueTohex = require("./ColorTranslate").valueToHex;
 
 test("Hex to RGB should run", () => {
+   console.log(hexToRgb("#F0F8FF"));
    expect(hexToRgb("#FFFFFF")).toBeTruthy()
 });
 
@@ -13,6 +14,7 @@ test("Hex should return RGB", () => {
 test("RGBtoHex should run", () => {
    expect(rgbToHex([189, 183, 107])).toBeTruthy();
 });
+
 
 test("RGBtoHex should run", () => {
    console.log(rgbToHex([189, 183, 107]));

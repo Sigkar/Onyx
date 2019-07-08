@@ -1,13 +1,16 @@
 "use strict";
 
-var _index = _interopRequireDefault(require("../build/index"));
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.GetColors = void 0;
 
-var _fs = _interopRequireDefault(require("fs"));
+var _OnyxScrape = _interopRequireDefault(require("../../scraping/OnyxScrape"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const GetColors = async () => {
-  const OnyxScraper = new _index.default.OnyxScrape("https://www.w3schools.com/tags/ref_colornames.asp", "td", "/colors/color_tryit");
+  const OnyxScraper = new _OnyxScrape.default("https://www.w3schools.com/tags/ref_colornames.asp", "td", "/colors/color_tryit");
   const data = await OnyxScraper.sendRequest().catch(error => {
     console.error(error);
   });
@@ -20,7 +23,7 @@ const GetColors = async () => {
 
     if (content.substring(0, 1) === "#") {
       hexValues[currentIndex.toString()]["hexValue"] = content;
-      hexValues[currentIndex.toString()]["rgb"] = _index.default.hexToRgb(content.toString());
+      hexValues[currentIndex.toString()]["rgb"] = Onyx.hexToRgb(content.toString());
     } else {
       hexValues[currentIndex.toString()]["colorString"] = content.replace("ShadesMix", "");
       hexValues[currentIndex.toString()]["terms"] = content.split(/([A-Z][a-z]+|[0-9]+)/g).filter(innerContent => {
@@ -34,8 +37,7 @@ const GetColors = async () => {
       currentIndex++;
     }
   });
-
-  _fs.default.writeFile("./src/seedData/MasterSeed.json", JSON.stringify({
+  fs.writeFile("./src/seedData/MasterSeed.json", JSON.stringify({
     data: {
       hexValues
     }
@@ -45,7 +47,6 @@ const GetColors = async () => {
       throw err;
     }
   });
-}; // Run Suites
+};
 
-
-GetColors();
+exports.GetColors = GetColors;

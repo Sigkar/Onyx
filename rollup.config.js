@@ -14,7 +14,9 @@ export default [
       format: "umd"
     },
     plugins: [
-      resolve(),
+      resolve({
+        preferBuiltins: true
+      }),
       commonjs(),
       terser(),
       json({
@@ -34,7 +36,9 @@ export default [
       format: "umd"
     },
     plugins: [
-      resolve(),
+      resolve({
+        preferBuiltins: true
+      }),
       commonjs(),
       json({
         preferConst: true,
@@ -48,11 +52,13 @@ export default [
     input: "src/index.js",
     external: ["ms"],
     output: [
-      { file: pkg.main, format: "cjs" },
+      { file: pkg.cjs, format: "cjs" },
       { file: pkg.module, format: "es" }
     ],
     plugins: [
-      resolve(),
+      resolve({
+        preferBuiltins: true
+      }),
       commonjs(),
       json({
         preferConst: true,

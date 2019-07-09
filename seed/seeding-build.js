@@ -35,7 +35,7 @@ const GetColors = async () => {
     }
   });
 
-  _fs.default.writeFile("./src/seedData/MasterSeed.json", JSON.stringify({
+  _fs.default.writeFile("./src/seedData/hexcolors/hex.json", JSON.stringify({
     data: {
       hexValues
     }

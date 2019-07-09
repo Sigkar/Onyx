@@ -10,8 +10,11 @@
   "scripts": {
     "compile-babel": "npx babel ./src --out-dir ./build --ignore '**/*.test.js'",
     "compile-seed": "npx babel ./seed/seeding.js -o ./seed/seeding-build.js --source-map --ignore '**/*.test.js'",
+    "compile-nn": "npx babel ./brain/Network.js -o ./brain/Network-build.js --source-map --ignore '**/*.test.js'",
     "preseed": "npm run compile-babel && npm run compile-seed",
     "seed": "node ./seed/seeding-build.js",
+    "preonyx": "npm run compile-babel && npm run compile-nn",
+    "onyx": "node ./brain/Network-build.js",
     "prelocaltest": "npm run dev",
     "localtest": "node ./local/localtest.js",
     "pretest": "npm run build",

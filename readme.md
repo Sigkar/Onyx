@@ -1,6 +1,7 @@
 # Onyx
 
 Onyx is a neural network built in JavaScript which generates color schemes based upon a term.
+This was written with zero priot knowledge or education on ML, so it's not going to be pretty.
 
 \# TODO: Create an Onyx subdomain to display examples
 
